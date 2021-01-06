@@ -1,5 +1,5 @@
 import React, { HTMLAttributes } from 'react';
-import { Drag } from '../Icons';
+import { Kebab } from '../Icons';
 import { Button } from '../Button/Button';
 import styles from './history-track.module.css';
 
@@ -16,7 +16,7 @@ export const HistoryTrack = ({
     <div className={`${styles.status} ${success ? styles['status--ok'] : styles['status--fail']}`} />
     {actionName}
     <Button className={styles.menu} invert onClick={console.log}>
-      <Drag />
+      <Kebab />
     </Button>
   </div>
 );

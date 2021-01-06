@@ -1,7 +1,7 @@
 import React from 'react';
 import { IconProp } from './types';
 
-export const Drag = ({
+export const Kebab = ({
   width = 4,
   height = 18,
   className,
