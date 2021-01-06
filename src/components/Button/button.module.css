@@ -1,0 +1,110 @@
+@import '../../App.css';
+
+.btn {
+  --bg-start: var(--btn-gradient-start, #45a6ff);
+  --bg-end: var(--btn-gradient-end, #0055fb);
+  --focus-box-shadow: var(--btn-focus-box-shadow, 0 0 0 0.25rem  rgba(49, 132, 253, 0.5));
+  --hover-bg:
+    var(
+      --btn-hover-bg,
+      linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0.15),
+        rgba(255, 255, 255, 0.15)
+      ),
+      linear-gradient(180deg, var(--bg-start) 0%, var(--bg-end) 100%),
+      #c4c4c4
+    );
+  --active-bg:
+    var(
+      --btn-active-bg,
+      linear-gradient(0deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)),
+      linear-gradient(180deg, var(--bg-start) 0%, var(--bg-end) 100%),
+      #c4c4c4
+    );
+  --disabled-bg:
+    var(
+      --btn-disabled-bg,
+      linear-gradient(0deg, #c4c4c4, #c4c4c4),
+      linear-gradient(180deg, var(--bg-start) 0%, var(--bg-end) 100%)
+    );
+
+  color: var(--white-color, black);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 30px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  padding: 5px 10px;
+  cursor: pointer;
+  background:
+    linear-gradient(
+      180deg,
+      var(--bg-start) 0%,
+      var(--bg-end) 100%
+    ),
+    #c4c4c4;
+  border: 0;
+  border-radius: var(--btn-border-radius, 5px);
+  outline: none;
+  position: relative;
+}
+
+.invert {
+  background: none;
+  padding: 4px;
+  line-height: 20px;
+  color: var(--balck-color);
+}
+
+.invert:hover,
+.invert:focus {
+  color: var(--link-color);
+}
+
+.content {
+  display: inline-grid;
+  grid-auto-flow: column;
+  column-gap: 8px;
+  align-items: center;
+  width: 100%;
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+
+.loader {
+  position: absolute;
+  left: calc(50% - 12px);
+  animation: var(--spin-animation);
+}
+
+.loading .content {
+  opacity: 0;
+}
+
+.btn:focus {
+  box-shadow: var(--focus-box-shadow);
+}
+
+.btn:not(.invert):hover {
+  background: var(--hover-bg);
+}
+
+.btn:not(.invert):active {
+  background: var(--active-bg);
+}
+
+.btn:not(.invert):focus-visible {
+  box-shadow: var(--focus-box-shadow);
+}
+
+.btn:focus:not(:focus-visible) {
+  box-shadow: none;
+}
+
+.btn[disabled] {
+  background: var(--disabled-bg);
+  pointer-events: none;
+}
