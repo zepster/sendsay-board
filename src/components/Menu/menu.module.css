@@ -1,0 +1,32 @@
+@import '/src/App.css';
+
+.menu {
+  display: inline-block;
+  background: var(--color-white);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 3px;
+  padding: 5px 0;
+}
+
+.item {
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 20px;
+  color: var(--black-color);
+  padding: 10px 15px;
+}
+
+.item:hover {
+  background-color: #0055fb;
+  color: var(--white-color);
+}
+
+.item--danger:hover {
+  background-color: var(--red-color);
+}
+
+.delimiter {
+  height: 1px;
+  margin: 5px 0;
+  background-color: rgba(0, 0, 0, 0.2);
+}
