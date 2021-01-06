@@ -5,3 +5,4 @@ export { Format } from './Format';
 export { Loader } from './Loader';
 export { Logout } from './Logout';
 export { FaceNormal } from './FaceNormal';
+export { Cross } from './Cross';
