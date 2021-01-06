@@ -3,7 +3,7 @@
   --white-color: #fff;
   --balck-color: ##0d0d0d;
   --btn-border-radius: 5px;
-  --btn-focus-box-shadow: 0 0 0 0.25rem  rgba(49, 132, 253, 0.5);
+  --btn-focus-box-shadow: 0 0 0 2px  rgba(49, 132, 253, 0.5);
   --spin-animation: spin 2s linear infinite;
 }
 
