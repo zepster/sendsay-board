@@ -6,6 +6,10 @@ import { Button, ButtonProps } from './Button';
 import Format from '../Icons/Format';
 import Expand from '../Icons/Expand';
 
+import * as Icons from '../Icons';
+
+const getIcon = (name: keyof typeof Icons) => Icons[name] || Icons.Collapse;
+
 export default {
   title: 'Example/Button',
   component: Button,
@@ -13,6 +17,12 @@ export default {
     loading: { control: 'boolean' },
     disabled: { control: 'boolean' },
     invert: { control: 'boolean' },
+    icon: {
+      control: {
+        type: 'select',
+        options: Object.keys(Icons),
+      },
+    },
   },
 } as Meta;
 
@@ -26,14 +36,17 @@ export const Loading = (args: ButtonProps) => (
   </Button>
 );
 export const Invert = (args: ButtonProps) => <Button invert {...args}>Invert</Button>;
-export const WithIcon = (args: ButtonProps) => (
-  <Button
-    {...args}
-  >
-    <Format />
-    Invert
-  </Button>
-);
+export const WithIcon = ({ icon, ...rest }: ButtonProps & { icon: string }) => {
+  const Icon = getIcon(icon as any);
+  return (
+    <Button
+      {...rest}
+    >
+      <Icon />
+      Invert
+    </Button>
+  );
+};
 
 export const ButtonIcon = (args: ButtonProps) => (
   <Button
