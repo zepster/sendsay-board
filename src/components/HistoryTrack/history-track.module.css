@@ -35,12 +35,12 @@
 }
 
 .menu {
-  color: var(--balck-color);
+  color: var(--black-color);
   opacity: 0.2;
 }
 
 .menu:hover,
 .menu:focus {
-  color: var(--balck-color);
+  color: var(--black-color);
   opacity: 0.4;
 }
