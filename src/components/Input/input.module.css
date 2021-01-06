@@ -22,11 +22,3 @@
   box-shadow: var(--box-shadow);
   border-radius: 7px;
 }
-
-.input:focus-visible {
-  box-shadow: var(--box-shadow);
-}
-
-.input:focus:not(:focus-visible) {
-  box-shadow: none;
-}
