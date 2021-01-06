@@ -76,7 +76,7 @@
 
 .loader {
   position: absolute;
-  left: calc(50% - 12px);
+  left: calc(50% - 10px);
   animation: var(--spin-animation);
 }
 

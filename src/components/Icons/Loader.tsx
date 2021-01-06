@@ -7,7 +7,7 @@ export default function Loader({
   className,
 }: IconProp) {
   return (
-    <svg className={className} width={width} height={height} viewBox="0 0 24 24" fill="currentcolor" xmlns="http://www.w3.org/2000/svg">
+    <svg className={className} width={width} height={height} viewBox="0 0 24 24" fill="currentcolor" stroke="currentcolor" xmlns="http://www.w3.org/2000/svg">
       <path opacity="0.2" d="M12 2V6" stroke="currentcowhitelor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
       <path opacity="0.7" d="M12 18V22" stroke="currentcowhitelor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
       <path d="M4.92999 4.92999L7.75999 7.75999" stroke="currentcowhitelor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
