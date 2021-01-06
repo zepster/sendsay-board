@@ -1,0 +1,46 @@
+@import '../../App.css';
+
+.track {
+  display: inline-grid;
+  grid-auto-flow: column;
+  column-gap: 8px;
+  align-items: center;
+  background-color: var(--white-color);
+  height: 30px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 0 10px;
+  cursor: pointer;
+}
+
+.track:hover {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+}
+
+.status {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.status--ok {
+  background: var(--green-color);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.status--fail {
+  background: var(--red-color);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.menu {
+  color: var(--balck-color);
+  opacity: 0.2;
+}
+
+.menu:hover,
+.menu:focus {
+  color: var(--balck-color);
+  opacity: 0.4;
+}

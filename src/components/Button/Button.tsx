@@ -10,6 +10,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 export const Button = ({
   children,
+  className,
   type = 'button',
   loading = false,
   invert = false,
@@ -17,7 +18,7 @@ export const Button = ({
 }: ButtonProps) => (
   <button
     type={type === 'button' ? 'button' : 'submit'}
-    className={`${styles.btn} ${loading ? styles.loading : ''} ${invert ? styles.invert : ''}`}
+    className={`${styles.btn} ${loading ? styles.loading : ''} ${invert ? styles.invert : ''} ${className}`}
     {...rest}
   >
     { loading && <Loader className={styles.loader} /> }
