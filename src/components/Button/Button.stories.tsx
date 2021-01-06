@@ -3,8 +3,7 @@ import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
 
 import { Button, ButtonProps } from './Button';
-import Format from '../Icons/Format';
-import Expand from '../Icons/Expand';
+import { Expand, Format } from '../Icons';
 
 import * as Icons from '../Icons';
 
