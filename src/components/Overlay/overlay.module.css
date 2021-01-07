@@ -1,0 +1,5 @@
+@import '/src/App.css';
+
+.fade {
+  animation: var(--fade-animation);
+}
