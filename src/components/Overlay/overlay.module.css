@@ -3,18 +3,3 @@
 .fade {
   animation: var(--fade-animation);
 }
-
-.not {
-  position: absolute;
-  inset: 5px;
-  background-color: #f6f6f6;
-  padding: 0 5px;
-  font-size: 12px;
-  line-height: 20px;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-  border-radius: 5px;
-  font-family: inherit;
-  animation: var(--notif-animation);
-}

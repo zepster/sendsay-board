@@ -2,26 +2,16 @@ import React from 'react';
 /* eslint import/no-extraneous-dependencies: off */
 import { Meta } from '@storybook/react/types-6-0';
 
-import style from './overlay.module.css';
-
 import { Overlay, OverlayProps } from './Overlay';
 import { HistoryTrack } from '../HistoryTrack/HistoryTrack';
 import { Menu } from '../Menu/Menu';
+import { Notify } from '../Notification/Inner';
 
 export default {
   title: 'Example/Overlay',
   component: Overlay,
   argTypes: {},
 } as Meta;
-
-const Notify = ({ onEnd }: {onEnd: () => void}) => (
-  <div
-    onAnimationEnd={onEnd}
-    className={style.not}
-  >
-    Скопоровано
-  </div>
-);
 
 export const OverlayBase = (props: OverlayProps) => {
   const [show, setShow] = React.useState(false);
@@ -31,6 +21,7 @@ export const OverlayBase = (props: OverlayProps) => {
   const onExecute = () => console.log('onExecute');
   const onCopy = () => {
     setShowNotification(true);
+    setShow(false);
   };
   const onRemove = () => console.log('onRemove');
 
@@ -43,10 +34,10 @@ export const OverlayBase = (props: OverlayProps) => {
       <HistoryTrack
         ref={targetRef}
         success
-        actionName="pong fsaf asf asf asf asf "
+        actionName="pong"
         onMenuClick={() => setShow(!show)}
       >
-        {showNotification && <Notify onEnd={onTransitionEnd} />}
+        {showNotification && <Notify onEnd={onTransitionEnd} text="Скопировано " />}
       </HistoryTrack>
       <Overlay show={show} target={targetRef.current}>
         { (styles, animationClass) => (

@@ -1,0 +1,25 @@
+@import '/src/App.css';
+
+.notify {
+  background-color: #f6f6f6;
+  padding: 0 5px;
+  font-size: 12px;
+  line-height: 20px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  border-radius: 5px;
+  font-family: inherit;
+  margin: auto;
+  animation: var(--notif-animation);
+}
+
+.container {
+  position: absolute;
+  top: 0;
+  left: 3px;
+  bottom: 0;
+  right: 3px;
+  overflow: hidden;
+  display: flex;
+}

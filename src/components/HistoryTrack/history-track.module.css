@@ -13,7 +13,6 @@
   cursor: pointer;
   white-space: nowrap;
   position: relative;
-  overflow: hidden;
 }
 
 .track:hover {
