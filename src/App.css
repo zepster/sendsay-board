@@ -8,6 +8,7 @@
   --btn-focus-box-shadow: 0 0 0 2px  rgba(49, 132, 253, 0.5);
   --spin-animation: spin 2s linear infinite;
   --fade-animation: fade 0.2s linear;
+  --notif-animation: notif 1s linear 1s;
 }
 
 html {
@@ -33,5 +34,17 @@ html {
   to {
     transform: translateY(0);
     opacity: 1;
+  }
+}
+
+@keyframes notif {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateY(-100%);
+    opacity: 0;
   }
 }

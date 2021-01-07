@@ -12,6 +12,8 @@
   padding: 0 10px;
   cursor: pointer;
   white-space: nowrap;
+  position: relative;
+  overflow: hidden;
 }
 
 .track:hover {
