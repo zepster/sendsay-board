@@ -1,12 +1,12 @@
 import React from 'react';
 import styles from './inner.module.css';
 
-interface NotifyProps {
-  onEnd: () => void;
+export interface InnerNotifyProps {
+  onEnd?: () => void;
   text: string;
 }
 
-export const Notify = ({ onEnd, text }: NotifyProps) => (
+export const Inner = ({ onEnd, text }: InnerNotifyProps) => (
   <div className={styles.container}>
     <div
       onAnimationEnd={onEnd}

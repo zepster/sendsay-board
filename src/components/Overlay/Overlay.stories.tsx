@@ -5,7 +5,7 @@ import { Meta } from '@storybook/react/types-6-0';
 import { Overlay, OverlayProps } from './Overlay';
 import { HistoryTrack } from '../HistoryTrack/HistoryTrack';
 import { Menu } from '../Menu/Menu';
-import { Notify } from '../Notification/Inner';
+import { Inner } from '../Notification/Inner';
 
 export default {
   title: 'Example/Overlay',
@@ -37,7 +37,7 @@ export const OverlayBase = (props: OverlayProps) => {
         actionName="pong"
         onMenuClick={() => setShow(!show)}
       >
-        {showNotification && <Notify onEnd={onTransitionEnd} text="Скопировано " />}
+        {showNotification && <Inner onEnd={onTransitionEnd} text="Скопировано " />}
       </HistoryTrack>
       <Overlay show={show} target={targetRef.current}>
         { (styles, animationClass) => (
