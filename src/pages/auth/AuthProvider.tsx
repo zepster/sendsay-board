@@ -1,7 +1,8 @@
-import React, { Dispatch } from 'react';
+import React from 'react';
+import { Credentions, login as loginApi } from 'src/services/api/sendsay';
 
 const userInfo = {
-  login: '',
+  account: '',
   sublogin: '',
 };
 
@@ -10,12 +11,14 @@ const defaultValue = {
   user: userInfo,
 };
 
-export const authContext = React.createContext<{
+type Context = {
   user: typeof defaultValue,
-  setUser: Dispatch<typeof userInfo>
-}>({
+  login:(creds: Credentions) => Promise<void>,
+};
+
+export const authContext = React.createContext<Context>({
   user: defaultValue,
-  setUser: () => {},
+  login: () => Promise.resolve(),
 });
 const { Provider } = authContext;
 
@@ -24,7 +27,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const value = React.useMemo(() => ({
     user,
-    setUser: (payload: typeof userInfo) => setUser({ auth: true, user: payload }),
+    login: (creds: Credentions) => loginApi(creds).then(
+      (account) => setUser({ auth: true, user: account }),
+    ),
   }),
   [user]);
 

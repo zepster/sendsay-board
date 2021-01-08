@@ -8,9 +8,20 @@ if (localStorage.getItem('key')) {
   sendsayInstance.setSession(localStorage.getItem(LOCAL_STORAGE_KEY) as string);
 }
 
+export interface Credentions {
+  login: string;
+  password: string;
+  sublogin?: string;
+}
+
+export interface Account {
+  account: string,
+  sublogin: string,
+}
+
 export const login = (
-  credentions: { login: string, password: string, sublogin?: string },
-) => sendsayInstance.login({
+  credentions: Credentions,
+): Promise<Account> => sendsayInstance.login({
   login: credentions.login,
   password: credentions.password,
   sublogin: credentions.sublogin,
@@ -18,5 +29,5 @@ export const login = (
   localStorage.setItem(LOCAL_STORAGE_KEY, sendsayInstance.session);
   return sendsayInstance.request({ action: 'pong' });
 }).then(
-  (response: any) => ({ login: response.account, sublogin: response.sublogin }),
+  (response: any) => ({ account: response.account, sublogin: response.sublogin }),
 );

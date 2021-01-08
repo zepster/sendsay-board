@@ -1,30 +1,33 @@
 import React from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
 import { Button } from 'src/components/Button/Button';
 import { Card } from 'src/components/Card/Card';
 import { FormItem } from 'src/components/FormItem/FormItem';
 import { Input } from 'src/components/Input/Input';
 import { Alert } from 'src/components/Notification/Alert';
-import { login } from 'src/services/api/sendsay';
 import { authContext } from './AuthProvider';
 import { Container } from './components/Container/Container';
 import { useFetch } from './useFetch';
 
 export const Login = () => {
-  const { setUser } = React.useContext(authContext);
+  const history = useHistory();
+  const location = useLocation();
+  const { from }: any = location.state || { from: { pathname: '/' } };
+
+  const { login } = React.useContext(authContext);
   const {
-    run, isLoading, isError, error, data, isSuccess,
+    run, isLoading, isError, error,
   } = useFetch();
 
-  const [name, setName] = React.useState('');
-  const [pass, setPass] = React.useState('');
+  const [name, setName] = React.useState('alekseyexe@gmail.com');
+  const [pass, setPass] = React.useState('xu8Pouboch');
 
-  React.useEffect(() => {
-    if (isSuccess && data) {
-      setUser(data as any);
-    }
-  }, [isSuccess, data, setUser]);
-
-  const auth = () => run(() => login({ login: name, password: pass }));
+  const auth = () => run(
+    () => login({ login: name, password: pass })
+      .then(
+        () => history.replace(from),
+      ),
+  );
 
   return (
     <Container>
@@ -45,7 +48,6 @@ export const Login = () => {
         </FormItem>
 
         <Button loading={isLoading} onClick={auth}>Войти</Button>
-        {/* <Button loading={isLoading} onClick={req}>Req</Button> */}
       </Card>
     </Container>
   );
