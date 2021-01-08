@@ -1,0 +1,26 @@
+@import '/src/App.css';
+
+.alert {
+  background: rgba(207, 44, 0, 0.1);
+  border-radius: 5px;
+  padding: 10px 10px 10px 42px;
+  color: var(--red-color);
+  line-height: 1.66;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.icon {
+  position: absolute;
+  left: 10px;
+  top: 12px;
+}
+
+.text {
+  font-size: 18px;
+}
+
+.description {
+  font-size: 12px;
+  opacity: 0.5;
+}
