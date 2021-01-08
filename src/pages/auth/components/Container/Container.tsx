@@ -1,5 +1,5 @@
 import React from 'react';
-import { Logo } from '@/components/Icons';
+import { Logo } from 'src/components/Icons';
 import styles from './container.module.css';
 
 interface ContainerProps {

@@ -19,13 +19,14 @@ export const InputBase = (props: FormItemProps) => (
     <FormItem
       error
       id="id1"
+      name="name"
       label="Логин"
       extra="опционально"
     >
       <Input id="id1" />
     </FormItem>
 
-    <FormItem id="id2" label="Пароль">
+    <FormItem name="password" id="id2" label="Пароль">
       <Input id="id2" type="password" />
     </FormItem>
   </>

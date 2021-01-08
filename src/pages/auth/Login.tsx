@@ -1,8 +1,8 @@
-import { Button } from '@/components/Button/Button';
-import { Card } from '@/components/Card/Card';
-import { FormItem } from '@/components/FormItem/FormItem';
-import { Input } from '@/components/Input/Input';
-import { Alert } from '@/components/Notification/Alert';
+import { Button } from 'src/components/Button/Button';
+import { Card } from 'src/components/Card/Card';
+import { FormItem } from 'src/components/FormItem/FormItem';
+import { Input } from 'src/components/Input/Input';
+import { Alert } from 'src/components/Notification/Alert';
 import React from 'react';
 import { Container } from './components/Container/Container';
 
