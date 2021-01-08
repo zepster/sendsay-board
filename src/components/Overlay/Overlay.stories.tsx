@@ -10,13 +10,22 @@ import { Inner } from '../Notification/Inner';
 export default {
   title: 'Example/Overlay',
   component: Overlay,
-  argTypes: {},
+  argTypes: {
+    offsetX: { control: 'number', defaultValue: 0 },
+    offsetY: { control: 'number', defaultValue: 0 },
+    show: { control: 'boolean' },
+  },
 } as Meta;
 
 export const OverlayBase = (props: OverlayProps) => {
-  const [show, setShow] = React.useState(false);
+  const { offsetX, offsetY, show: controlShow } = props;
+  const [show, setShow] = React.useState(controlShow);
   const targetRef = React.useRef<HTMLDivElement>(null);
   const [showNotification, setShowNotification] = React.useState(false);
+
+  React.useEffect(() => {
+    setShow(controlShow);
+  }, [controlShow]);
 
   const onExecute = () => console.log('onExecute');
   const onCopy = () => {
@@ -39,10 +48,15 @@ export const OverlayBase = (props: OverlayProps) => {
       >
         {showNotification && <Inner onEnd={onTransitionEnd} text="Скопировано " />}
       </HistoryTrack>
-      <Overlay show={show} target={targetRef.current}>
+      <Overlay
+        show={show}
+        target={targetRef.current}
+        offsetX={offsetX}
+        offsetY={offsetY}
+      >
         { (styles, animationClass) => (
           <div style={styles} className={animationClass}>
-            <Menu {...props}>
+            <Menu>
               <Menu.Item onClick={onExecute}>Выполнить</Menu.Item>
               <Menu.Item onClick={onCopy}>Скопировать</Menu.Item>
               <Menu.Delimiter />
