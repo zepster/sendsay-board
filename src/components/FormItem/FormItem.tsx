@@ -4,6 +4,7 @@ import styles from './form-item.module.css';
 export interface FormItemProps {
   children: React.ReactElement,
   id: string,
+  name: string,
   label: string
   extra?: string,
   error?: boolean
@@ -11,6 +12,7 @@ export interface FormItemProps {
 
 export const FormItem = ({
   id,
+  name,
   children,
   extra,
   label,
@@ -28,7 +30,7 @@ export const FormItem = ({
       children && (
         React.cloneElement(
           children,
-          { error },
+          { error, id, name },
         ))
     }
   </div>
