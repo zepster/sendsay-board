@@ -6,6 +6,7 @@ import { Card, CardProps } from './Card';
 import { Input } from '../Input/Input';
 import { FormItem } from '../FormItem/FormItem';
 import { Button } from '../Button/Button';
+import { Alert } from '../Notification/Alert';
 
 export default {
   title: 'Example/Card',
@@ -15,6 +16,12 @@ export default {
 export const InputBase = (props: CardProps) => (
   <div style={{ width: 520, margin: 'auto' }}>
     <Card header="API-консолька">
+
+      <Alert
+        text="Вход не вышел"
+        description='{id: "error/auth/failed", explain: "wrong_credentials"}'
+      />
+
       <FormItem
         id="login"
         name="login"
