@@ -16,22 +16,24 @@ export const InputBase = (props: CardProps) => (
   <div style={{ width: 520, margin: 'auto' }}>
     <Card header="API-консолька">
       <FormItem
-        id="id1"
+        id="login"
+        name="login"
         label="Логин"
       >
-        <Input id="id1" />
+        <Input />
       </FormItem>
 
       <FormItem
-        id="id2"
+        id="sublogin"
+        name="sublogin"
         label="Сублогин"
         extra="Опционально"
       >
-        <Input id="id2" />
+        <Input />
       </FormItem>
 
-      <FormItem id="id2" label="Пароль">
-        <Input id="id2" type="password" />
+      <FormItem label="Пароль" id="password" name="password">
+        <Input type="password" />
       </FormItem>
 
       <Button>Войти</Button>
