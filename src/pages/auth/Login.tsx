@@ -19,8 +19,8 @@ export const Login = () => {
     run, isLoading, isError, error,
   } = useFetch();
 
-  const [name, setName] = React.useState('alekseyexe@gmail.com');
-  const [pass, setPass] = React.useState('xu8Pouboch');
+  const [name, setName] = React.useState('');
+  const [pass, setPass] = React.useState('');
 
   const auth = () => run(
     () => login({ login: name, password: pass })

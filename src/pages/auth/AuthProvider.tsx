@@ -1,5 +1,5 @@
 import React from 'react';
-import { Credentions, login as loginApi } from 'src/services/api/sendsay';
+import { Credentions, login as loginApi, restore } from 'src/services/api/sendsay';
 
 const userInfo = {
   account: '',
@@ -9,6 +9,7 @@ const userInfo = {
 const defaultValue = {
   auth: false,
   user: userInfo,
+  initializing: true,
 };
 
 type Context = {
@@ -25,10 +26,18 @@ const { Provider } = authContext;
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = React.useState(defaultValue);
 
+  React.useEffect(() => {
+    restore().then(
+      (account) => setUser({ auth: true, user: account, initializing: false }),
+    ).catch(
+      () => setUser({ auth: false, user: userInfo, initializing: false }),
+    );
+  }, []);
+
   const value = React.useMemo(() => ({
     user,
     login: (creds: Credentions) => loginApi(creds).then(
-      (account) => setUser({ auth: true, user: account }),
+      (account) => setUser(({ initializing }) => ({ auth: true, user: account, initializing })),
     ),
   }),
   [user]);

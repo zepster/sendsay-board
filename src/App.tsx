@@ -18,7 +18,7 @@ function App() {
           <PrivateRoute path="/board">
             <ApiConsole />
           </PrivateRoute>
-          <Route exact path="/">
+          <Route path="*">
             <Redirect to="/board" />
           </Route>
         </Switch>

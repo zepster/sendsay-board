@@ -4,7 +4,7 @@ const LOCAL_STORAGE_KEY = 'sendsay-session-key';
 
 const sendsayInstance = new Sendsay();
 
-if (localStorage.getItem('key')) {
+if (localStorage.getItem(LOCAL_STORAGE_KEY)) {
   sendsayInstance.setSession(localStorage.getItem(LOCAL_STORAGE_KEY) as string);
 }
 
@@ -18,6 +18,15 @@ export interface Account {
   account: string,
   sublogin: string,
 }
+
+export const restore = () => {
+  if (sendsayInstance.session) {
+    return sendsayInstance.request({ action: 'pong' }).then(
+      (response: any) => ({ account: response.account, sublogin: response.sublogin }),
+    );
+  }
+  return Promise.reject();
+};
 
 export const login = (
   credentions: Credentions,

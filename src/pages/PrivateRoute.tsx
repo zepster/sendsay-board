@@ -6,13 +6,25 @@ import {
 } from 'react-router-dom';
 import { authContext } from './auth/AuthProvider';
 
+const Loader = () => (
+  <div style={{
+    position: 'fixed',
+    inset: 0,
+    backgroundColor: 'rgba(255, 0, 0, 0.2)',
+  }}
+  />
+);
+
 export const PrivateRoute = ({ children, ...rest }: RouteProps) => {
-  const { user: { auth } } = React.useContext(authContext);
+  const { user: { auth, initializing } } = React.useContext(authContext);
   return (
     <Route
       {...rest}
-      render={({ location }) => (auth ? (
-        children
+      render={({ location }) => (initializing || auth ? (
+        <>
+          { initializing && <Loader />}
+          {children}
+        </>
       ) : (
         <Redirect
           to={{
