@@ -1,0 +1,10 @@
+@import '/src/App.css';
+
+.container {
+  width: 520px;
+  margin: 10px;
+}
+
+.content {
+  margin: 20px 0;
+}
