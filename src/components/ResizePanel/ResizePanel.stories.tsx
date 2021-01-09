@@ -1,6 +1,14 @@
 import React from 'react';
-import { RerizePanel } from 'src/components/ResizePanel/RerizePanel';
-import styles from './editor.module.css';
+/* eslint import/no-extraneous-dependencies: off */
+import { Meta } from '@storybook/react/types-6-0';
+
+import { RerizePanel } from './RerizePanel';
+
+export default {
+  title: 'Example/RerizePanel',
+  component: RerizePanel,
+  argTypes: {},
+} as Meta;
 
 const Item = () => (
   <div style={{
@@ -28,8 +36,4 @@ const Item = () => (
   </div>
 );
 
-export const Editor = () => (
-  <div className={styles.editor}>
-    <RerizePanel left={<Item />} right={<Item />} />
-  </div>
-);
+export const InputBase = () => <RerizePanel left={<Item />} right={<Item />} />;
