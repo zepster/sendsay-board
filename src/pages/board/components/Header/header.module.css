@@ -1,0 +1,33 @@
+@import '/src/App.css';
+
+.header {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--black-color);
+}
+
+.left,
+.right {
+  display: inline-grid;
+  grid-auto-flow: column;
+  align-items: center;
+}
+
+.left {
+  column-gap: 20px;
+}
+
+.right {
+  column-gap: 30px;
+}
+
+.logo {
+  color: var(--gray-color);
+}
+
+.title {
+  font-size: 20px;
+  line-height: 20px;
+}

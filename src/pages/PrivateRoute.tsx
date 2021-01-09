@@ -16,7 +16,7 @@ const Loader = () => (
 );
 
 export const PrivateRoute = ({ children, ...rest }: RouteProps) => {
-  const { user: { auth, initializing } } = React.useContext(authContext);
+  const { account: { auth, initializing } } = React.useContext(authContext);
   return (
     <Route
       {...rest}

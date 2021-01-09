@@ -28,6 +28,11 @@ export const restore = () => {
   return Promise.reject();
 };
 
+export const logout = () => {
+  localStorage.removeItem(LOCAL_STORAGE_KEY);
+  return sendsayInstance.request({ action: 'logout' }).catch(() => {});
+};
+
 export const login = (
   credentions: Credentions,
 ): Promise<Account> => sendsayInstance.login({
