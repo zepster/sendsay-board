@@ -1,0 +1,22 @@
+@import '/src/App.css';
+
+.track-list {
+  position: relative;
+}
+
+.track-list::after,
+.track-list::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.track-list::after {
+  top: -1px;
+}
+
+.track-list::before {
+  bottom: -1px;
+}

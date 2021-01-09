@@ -11,8 +11,9 @@ export interface HistoryTrackProps extends HTMLAttributes<HTMLDivElement> {
 export const HistoryList = ({
   onClear,
   children,
+  className,
 }: HistoryTrackProps) => (
-  <div className={styles['history-list']}>
+  <div className={`${styles['history-list']} ${className || ''}`}>
     <div className={styles.tracks}>
       {children}
     </div>
