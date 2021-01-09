@@ -1,5 +1,6 @@
 import React from 'react';
 import { Logo } from 'src/components/Icons';
+import { Sign } from 'src/components/Sign/Sign';
 import styles from './container.module.css';
 
 interface ContainerProps {
@@ -14,8 +15,6 @@ export const Container = ({ children }: ContainerProps) => (
     <div className={styles.content}>
       {children}
     </div>
-    <div className={styles.footer}>
-      @tot
-    </div>
+    <Sign>@tot</Sign>
   </div>
 );
