@@ -14,7 +14,7 @@ const Item = () => (
   <div style={{
     height: '100%',
     width: '100%',
-    // backgroundColor: '#ccc',
+    backgroundColor: '#ccc',
     overflow: 'auto',
   }}
   >
@@ -36,4 +36,4 @@ const Item = () => (
   </div>
 );
 
-export const InputBase = () => <RerizePanel left={<Item />} right={<Item />} />;
+export const Base = () => <RerizePanel left={<Item />} right={<Item />} />;
