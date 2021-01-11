@@ -17,7 +17,7 @@ export const Control = ({
       {label}
     </div>
     <div className={`${styles.container} ${!valid && styles.error}`}>
-      <div
+      <textarea
         contentEditable={!readonly}
         className={`${styles.control} ${styles.error}`}
       />
