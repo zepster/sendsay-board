@@ -1,0 +1,39 @@
+@import '/src/App.css';
+
+.container {
+  height: calc(100% - 23px);
+  width: 100%;
+  overflow: auto;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.container.error {
+  border: 1px solid #cf2c00;
+  box-shadow: 0 0 5px rgba(207, 44, 0, 0.5);
+}
+
+.label {
+  font-size: 12px;
+  line-height: 20px;
+  color: #999;
+  margin-bottom: 3px;
+}
+
+.label.error {
+  color: var(--red-color);
+}
+
+.control {
+  display: block;
+  height: max(100%, 520px);
+  width: max(100%, 640px);
+  font-family: monospace;
+  font-size: 18px;
+  outline: none;
+  padding: 10px;
+  resize: none;
+  border: none;
+
+  /* white-space: nowrap; */
+}

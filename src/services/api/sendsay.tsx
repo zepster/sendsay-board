@@ -19,9 +19,11 @@ export interface Account {
   sublogin: string,
 }
 
+export const request = (payload: any) => sendsayInstance.request(payload);
+
 export const restore = () => {
   if (sendsayInstance.session) {
-    return sendsayInstance.request({ action: 'pong' }).then(
+    return request({ action: 'pong' }).then(
       (response: any) => ({ account: response.account, sublogin: response.sublogin }),
     );
   }
@@ -41,7 +43,7 @@ export const login = (
   sublogin: credentions.sublogin,
 }).then(() => {
   localStorage.setItem(LOCAL_STORAGE_KEY, sendsayInstance.session);
-  return sendsayInstance.request({ action: 'pong' });
+  return request({ action: 'pong' });
 }).then(
   (response: any) => ({ account: response.account, sublogin: response.sublogin }),
 );

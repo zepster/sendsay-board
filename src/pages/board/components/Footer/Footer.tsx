@@ -1,17 +1,20 @@
 import React from 'react';
-import { Button } from 'src/components/Button/Button';
-import { Format } from 'src/components/Icons';
 import { Sign } from 'src/components/Sign/Sign';
 
 import styles from './footer.module.css';
 
-export const Footer = () => (
+interface FooterProps {
+  left: React.ReactElement,
+  right: React.ReactElement,
+}
+
+export const Footer = ({
+  left,
+  right,
+}: FooterProps) => (
   <div className={styles.footer}>
-    <Button>Отправить</Button>
+    {left}
     <Sign>@tot</Sign>
-    <Button invert>
-      <Format />
-      Форматировать
-    </Button>
+    {right}
   </div>
 );
