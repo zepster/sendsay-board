@@ -2,6 +2,7 @@ import React from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { Button } from 'src/components/Button/Button';
 import { Card } from 'src/components/Card/Card';
+import { Form } from 'src/components/Form/Form';
 import { FormItem } from 'src/components/FormItem/FormItem';
 import { Input } from 'src/components/Input/Input';
 import { Alert } from 'src/components/Notification/Alert';
@@ -35,19 +36,21 @@ export const Login = () => {
 
         {isError && (<Alert text="Вход не вышел" description={error} />)}
 
-        <FormItem id="login" name="login" label="Логин">
-          <Input value={name} onChange={(e) => setName(e.target.value)} />
-        </FormItem>
+        <Form onSubmit={auth}>
+          <FormItem id="login" name="login" label="Логин">
+            <Input value={name} onChange={(e) => setName(e.target.value)} />
+          </FormItem>
 
-        <FormItem id="sublogin" name="sublogin" label="Сублогин" extra="Опционально">
-          <Input />
-        </FormItem>
+          <FormItem id="sublogin" name="sublogin" label="Сублогин" extra="Опционально">
+            <Input />
+          </FormItem>
 
-        <FormItem label="Пароль" id="password" name="password">
-          <Input type="password" value={pass} onChange={(e) => setPass(e.target.value)} />
-        </FormItem>
+          <FormItem label="Пароль" id="password" name="password">
+            <Input type="password" value={pass} onChange={(e) => setPass(e.target.value)} />
+          </FormItem>
 
-        <Button loading={isLoading} onClick={auth}>Войти</Button>
+          <Button type="submit" loading={isLoading} onClick={auth}>Войти</Button>
+        </Form>
       </Card>
     </Container>
   );
