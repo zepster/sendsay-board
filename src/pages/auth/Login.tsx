@@ -9,6 +9,34 @@ import { Alert } from 'src/components/Notification/Alert';
 import { authContext } from './AuthProvider';
 import { Container } from './components/Container/Container';
 import { useFetch } from './useFetch';
+import { useForm } from './useForm';
+
+const initialFormValues = {
+  login: '',
+  sublogin: '',
+  password: '',
+};
+
+const isEmail = (value: string) => {
+  const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(value).toLowerCase());
+};
+
+const isName = (value: string) => {
+  const re = /^[A-Za-z1-9_]*$/;
+  return re.test(String(value).toLowerCase());
+};
+
+const minLen = (len: number) => (value: string) => value.length >= len;
+
+const isLogin = (value: string) => (
+  (minLen(1)(value) && isEmail(value)) || (minLen(8)(value) && isName(value))
+);
+
+const validators = {
+  login: (value: string) => [isLogin].every((f) => f(value)),
+  password: (value: string) => [minLen(8)].every((f) => f(value)),
+};
 
 export const Login = () => {
   const history = useHistory();
@@ -20,15 +48,22 @@ export const Login = () => {
     run, isLoading, isError, error,
   } = useFetch();
 
-  const [name, setName] = React.useState('');
-  const [pass, setPass] = React.useState('');
+  const {
+    handleChange,
+    values,
+    validate,
+    errors,
+  } = useForm<typeof initialFormValues>(initialFormValues, validators);
 
-  const auth = () => run(
-    () => login({ login: name, password: pass })
-      .then(
-        () => history.replace(from),
-      ),
-  );
+  const auth = () => {
+    if (!validate()) { return; }
+    run(
+      () => login(values)
+        .then(
+          () => history.replace(from),
+        ),
+    );
+  };
 
   return (
     <Container>
@@ -37,19 +72,25 @@ export const Login = () => {
         {isError && (<Alert text="Вход не вышел" description={error} />)}
 
         <Form onSubmit={auth}>
-          <FormItem id="login" name="login" label="Логин">
-            <Input value={name} onChange={(e) => setName(e.target.value)} />
+          <FormItem id="login" name="login" label="Логин" error={errors.login}>
+            <Input value={values.login} onChange={handleChange} />
           </FormItem>
 
-          <FormItem id="sublogin" name="sublogin" label="Сублогин" extra="Опционально">
-            <Input />
+          <FormItem
+            id="sublogin"
+            name="sublogin"
+            label="Сублогин"
+            extra="Опционально"
+            error={errors.sublogin}
+          >
+            <Input value={values.sublogin} onChange={handleChange} />
           </FormItem>
 
-          <FormItem label="Пароль" id="password" name="password">
-            <Input type="password" value={pass} onChange={(e) => setPass(e.target.value)} />
+          <FormItem label="Пароль" id="password" name="password" error={errors.password}>
+            <Input type="password" value={values.password} onChange={handleChange} />
           </FormItem>
 
-          <Button type="submit" loading={isLoading} onClick={auth}>Войти</Button>
+          <Button type="submit" loading={isLoading}>Войти</Button>
         </Form>
       </Card>
     </Container>
